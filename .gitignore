@@ -1,0 +1,35 @@
+# Build
+/target/
+**/*.rs.bk
+
+# Native dependency that gets downloaded (see scripts/fetch_openxr_loader.sh)
+/crates/atlas-xr/libs/
+
+# Versions prepared for publishing (scripts/release.sh)
+/dist/
+
+# Packages and signatures
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# Local working notes (paths and details of this machine): not published
+/docs/HANDOFF.md
+/docs/VISION.md
+
+# Secrets and credentials: they must never reach the repository
+.env
+.env.*
+credenciales
+credentials*
+
+# Editors and operating system
+.idea/
+.vscode/
+*.iml
+*.swp
+.DS_Store
+Thumbs.db
+
+*.lock

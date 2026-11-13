@@ -1,0 +1,9 @@
+* text=auto
+
+# Shell scripts must keep LF even when cloned on Windows.
+*.sh text eol=lf
+
+# Binaries: no conversion.
+*.png binary
+*.ttf binary
+*.so binary

@@ -1,0 +1,15 @@
+[package]
+name = "atlas-ui"
+description = "CPU rendering of the Atlas Code panels (code text, cards, keyboard, alerts)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+atlas-editor = { path = "../atlas-editor" }
+atlas-syntax = { path = "../atlas-syntax" }
+fontdue = "0.9"
+
+[dev-dependencies]
+png = "0.17"
+atlas-spatial = { path = "../atlas-spatial" }

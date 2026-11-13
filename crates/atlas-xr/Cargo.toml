@@ -1,0 +1,87 @@
+[package]
+name = "atlas-xr"
+description = "Atlas Code OpenXR/Vulkan app for Meta Quest"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+atlas-editor = { path = "../atlas-editor" }
+atlas-ui = { path = "../atlas-ui" }
+atlas-git = { path = "../atlas-git" }
+atlas-spatial = { path = "../atlas-spatial" }
+atlas-script = { path = "../atlas-script" }
+atlas-link = { path = "../atlas-link" }
+# Decoding the laptop screen images.
+image = { version = "0.25", default-features = false, features = ["jpeg"] }
+android-activity = { version = "0.6.1", features = ["native-activity"] }
+android_logger = "0.15.1"
+ash = "0.38.0"
+log = "0.4.34"
+openxr = { version = "0.22.0", features = ["loaded"] }
+jni = "0.22"
+
+[package.metadata.android]
+package = "com.atlascode.xr"
+apk_name = "AtlasCode"
+build_targets = ["aarch64-linux-android"]
+runtime_libs = "libs"
+
+[package.metadata.android.sdk]
+min_sdk_version = 29
+target_sdk_version = 34
+
+[[package.metadata.android.uses_feature]]
+name = "android.hardware.vr.headtracking"
+required = true
+version = 1
+
+[[package.metadata.android.uses_feature]]
+name = "com.oculus.feature.PASSTHROUGH"
+required = false
+
+[[package.metadata.android.uses_feature]]
+name = "oculus.software.handtracking"
+required = false
+
+[[package.metadata.android.uses_feature]]
+name = "oculus.software.overlay_keyboard"
+required = false
+
+[[package.metadata.android.uses_permission]]
+name = "com.oculus.permission.HAND_TRACKING"
+
+[[package.metadata.android.uses_permission]]
+name = "android.permission.INTERNET"
+
+[[package.metadata.android.uses_permission]]
+name = "org.khronos.openxr.permission.OPENXR"
+
+[[package.metadata.android.uses_permission]]
+name = "org.khronos.openxr.permission.OPENXR_SYSTEM"
+
+[[package.metadata.android.application.meta_data]]
+name = "com.oculus.supportedDevices"
+# Only the headsets where it has been tested (Quest 3) and its sibling with the same chip and color passthrough.
+value = "quest3|quest3s"
+
+[package.metadata.android.application]
+label = "Atlas Code"
+# `debuggable` is decided by cargo-apk: on in development, off with --release.
+
+[package.metadata.android.application.activity]
+config_changes = "density|keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|uiMode"
+launch_mode = "singleTask"
+orientation = "landscape"
+resizeable_activity = false
+
+[[package.metadata.android.application.activity.intent_filter]]
+actions = ["android.intent.action.MAIN"]
+categories = [
+    "com.oculus.intent.category.VR",
+    "org.khronos.openxr.intent.category.IMMERSIVE_HMD",
+    "android.intent.category.LAUNCHER",
+]

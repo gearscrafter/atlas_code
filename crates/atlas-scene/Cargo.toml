@@ -1,0 +1,15 @@
+[package]
+name = "atlas-scene"
+description = "Atlas scene model: nodes, shapes, materials, JSON save format and glTF export (no XR)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+glam = "0.34.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+# An independent glTF reader: it checks that what is exported is valid.
+gltf = { version = "1.4", default-features = false, features = ["utils", "names", "extras"] }

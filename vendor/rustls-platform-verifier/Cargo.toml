@@ -1,0 +1,12 @@
+# Local replacement for `rustls-platform-verifier` (see README.md in this folder).
+[package]
+name = "rustls-platform-verifier"
+version = "0.7.1"
+edition = "2021"
+license = "Apache-2.0"
+description = "TLS certificate verifier with bundled roots (webpki-roots), without depending on Java"
+publish = false
+
+[dependencies]
+rustls = { version = "0.23.27", default-features = false, features = ["std"] }
+webpki-roots = "1"

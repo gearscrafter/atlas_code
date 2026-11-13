@@ -1,0 +1,16 @@
+[package]
+name = "atlas-link"
+description = "Encrypted link between Atlas (headset) and Atlas Bridge (laptop): code pairing, files, screen and control"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+# Pairing with a short code that never travels over the network (PAKE) and authenticated encryption of the channel.
+spake2 = "0.4"
+chacha20poly1305 = "0.10"
+hkdf = "0.12"
+sha2 = "0.10"
+rand_core = { version = "0.6", features = ["getrandom"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -1,0 +1,19 @@
+[package]
+name = "atlas-bridge"
+description = "Atlas Bridge: the laptop program that connects with Atlas in the headset (files, screen, control)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "atlas-bridge"
+path = "src/main.rs"
+
+[dependencies]
+atlas-link = { path = "../atlas-link" }
+# Native window on Windows and Mac, with file drag and drop.
+eframe = "0.29"
+# Screen capture on Windows and Mac, and JPEG compression.
+xcap = "0.9"
+image = { version = "0.25", default-features = false, features = ["jpeg"] }
+enigo = "0.2"

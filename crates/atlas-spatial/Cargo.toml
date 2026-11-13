@@ -1,0 +1,9 @@
+[package]
+name = "atlas-spatial"
+description = "3D math, meshes and spatial interaction for Atlas Code (no XR or Vulkan)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+glam = "0.34.1"

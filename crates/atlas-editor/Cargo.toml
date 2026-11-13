@@ -1,0 +1,9 @@
+[package]
+name = "atlas-editor"
+description = "Text, cursor and modal editing for Atlas Code (no XR dependencies)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+ropey = "1"

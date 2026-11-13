@@ -1,0 +1,23 @@
+﻿[workspace]
+resolver = "2"
+members = ["crates/atlas-bridge", "crates/atlas-editor", "crates/atlas-git", "crates/atlas-link", "crates/atlas-scene", "crates/atlas-script", "crates/atlas-spatial", "crates/atlas-syntax", "crates/atlas-ui", "crates/atlas-xr"]
+
+# reqwest verifies TLS with rustls-platform-verifier, which needs Java on Android.
+# It is replaced by a local crate with bundled roots (see vendor/).
+[patch.crates-io]
+rustls-platform-verifier = { path = "vendor/rustls-platform-verifier" }
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["gearscrafter"]
+
+# The CPU panel rendering is unusable without optimizations (~300 ms per key).
+[profile.dev]
+opt-level = 3
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"
